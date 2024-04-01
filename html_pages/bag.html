@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Card Example</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Bag</h1>
+  <ul>
+    <li>
+      Plastic
+      <ul>
+        <li>Filled
+          <ul>
+            <li><a href="#bag_filled_with_biowaste">With biowaste</a></li>
+            <li><a href="#bag_filled_unkown_content">Unsure of content/not visible</a></li>
+          </ul>
+        </li>
+        <li>Empty
+          <ul>
+            <li><a href="#bag_empty_transparent">Transparent</a></li>
+            <li><a href="#bag_empty_opaque">Opaque</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#compostable_bag">Compostable</a></li>
+    <li><a href="#paper_bag">Paper</a></li>
+    <li><a href="#tea_bag">Tea bag</a></li>
+    <li><a href="#unsure">Unsure</a></li>
+  </ul>
+  <div class="card">
+    <h2 class="card-title" id="bag_filled_with_biowaste">Plastic bag filled with biowaste</h2>
+    <div class="image-text-container">
+      <div class="card-content">
+        <p>Transparent to semitransparent plastic bags where it is reasonable to think there are filled with compost.</p>
+      </div>
+    </div>
+    <h3 style="text-align: center;">Real life example</h3>
+    <img src="assets/bag_filled_with_biowaste_real.png" alt="Big Image" class="big-image">
+  </div>
+</br>
+  <div class="card">
+    <h2 class="card-title" id="bag_filled_unkown_content">Plastic bag filled, unsure of content/not visible</h2>
+    <div class="image-text-container">
+      <div class="card-content">
+        <p>Plastic bag which you can tell is filled.</p>
+        <p>You can't see the content because it's opaque, or you can see the content but you're not sure if it's biowaste.</p>
+      </div>
+    </div>
+    <h3 style="text-align: center;">Real life example</h3>
+    <img src="assets/bag_filled_unknown_content_real.png" alt="Big Image" class="big-image">
+  </div>
+</br>
+  <div class="card">
+    <h2 class="card-title" id="bag_empty_transparent">Empty transparent plastic bag</h2>
+    <div class="image-text-container">
+        <img src="assets/transparent_plastic_bag_example.png" alt="Image" class="card-image">
+      <div class="card-content">
+        <p>Empty transparent plastic bag.</p>
+      </div>
+    </div>
+    <h3 style="text-align: center;">Real life example</h3>
+    <img src="assets/empty_transparent_bag_real.png" alt="Big Image" class="big-image">
+  </div>
+</br>
+  <div class="card">
+    <h2 class="card-title" id="bag_empty_opaque">Empty opaque plastic bag</h2>
+    <div class="image-text-container">
+      <img src="assets/empty_opaque_bag_example.png" alt="Image" class="card-image">
+      <div class="card-content">
+        <p>Empty opaque plastic bag.</p>
+      </div>
+    </div>
+    <h3 style="text-align: center;">Real life example</h3>
+    <img src="assets/empty_plastic_bag_opaque_real.png" alt="Big Image" class="big-image">
+  </div>
+</br>
+  <div class="card">
+    <h2 class="card-title" id="compostable_bag">Compostable bag</h2>
+    <div class="image-text-container">
+      <img src="assets/compostable_bag_example.png" alt="Image" class="card-image">
+      <div class="card-content">
+        <p>Empty opaque plastic bag.</p>
+      </div>
+    </div>
+    <h3 style="text-align: center;">Real life example</h3>
+    <img src="assets/compostable_bag_real.png" alt="Big Image" class="big-image">
+  </div>
+</body>
+</br>
+  <div class="card">
+    <h2 class="card-title" id="paper_bag">Paper bag</h2>
+    <div class="image-text-container">
+      <img src="assets/paper_bag_example.jpeg" alt="Image" class="card-image">
+      <div class="card-content">
+        <p>Carry / shopping bags made of paper.</p>
+      </div>
+    </div>
+    <h3 style="text-align: center;">Real life example</h3>
+    <img src="assets/paper_bag_real.png" alt="Big Image" class="big-image">
+  </div>
+</br>
+<div class="card">
+  <h2 class="card-title" id="tea_bag">Tea bag</h2>
+  <div class="image-text-container">
+    <img src="assets/tea_bag_dexample.jpeg" alt="Image" class="card-image">
+    <div class="card-content">
+      <p>Tea bag.</p>
+    </div>
+  </div>
+</div>
+</br>
+<div class="card">
+  <h2 class="card-title" id="unsure">Unsure</h2>
+  <div class="image-text-container">
+    <div class="card-content">
+      <p>It's a bag, but you can't tell the material.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

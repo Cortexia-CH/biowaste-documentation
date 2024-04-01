@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #container {
+            display: flex;
+        }
+        #menu {
+            flex: 1;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        #main {
+            flex: 3;
+            padding: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 8px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="menu">
+            <input type="text" id="searchInput" placeholder="Search a word...">
+            <button onclick="search()">Search</button>
+            <p>Click on each category to see examples:</p>
+            <ul id="menuList"></ul>
+        </div>
+        <div id="main">
+            <h2>Welcome to the Documentation</h2>
+            <div id="documentationContent">
+                Select a category from the menu or use the search bar to find documentation.
+            </div>
+        </div>
+    </div>
+
+    <script>
+	function includeExternalContent(name) {
+		fetch(`html_pages/${name}.html`)
+			.then(response => response.text())
+			.then(data => {
+			document.getElementById('main').innerHTML = data;
+			})
+			.catch(error => {
+			console.error('Error fetching cats.html:', error);
+			});
+		}
+
+    // Call the function to include cats.html content
+        // Load documentation data from JSON file
+        const documentationData = [
+            {
+                "category": "Square shaped",
+                "content": [
+                    {
+                        "subcategory": "Box", "tags": ["transport", "packaging", "cardboard"]
+                    },
+                    {
+                        "subcategory": "Cardboard food box", "tags": ["food", "tray", "takeaway", "lunch", "packaging"]
+                    },
+                    {
+                        "subcategory": "Egg carton", "tags": ["egg", "carton", "cardboard"]
+                    },
+                    {
+                        "subcategory": "Tetra Pak", "tags": ["carton", "milk", "juice", "cardboard"]
+                    },
+                    {
+                        "subcategory": "Cigarette packaging", "tags": ["cigarette", "cardboard"]
+                    },
+                    {
+                        "subcategory": "Solid plastic", "tags": ["tray", "packaging"]
+                    },
+                    {
+                        "subcategory": "Aluminium", "tags": ["food", "tray", "takeaway", "lunch"]
+                    },
+                    {
+                        "subcategory": "Glass", "tags": ["recipient", "dish"]
+                    },
+                    {
+                        "subcategory": "Unsure of material", "tags": ["square", "rectangle", "box", "unknown"]
+                    }
+                ]
+            },
+            {
+                "category": "Flat object foil",
+                "content": [
+                    {
+                        "subcategory": "Paper", "tags": ["sheet"]
+                    },
+                    {
+                        "subcategory": "Newspaper", "tags": []
+                    },
+                    {
+                        "subcategory": "Plastic food wrapping", "tags": ["packaging", "chocolate", "bar", "candy", "chips", "food", "snack"]
+                    },
+                    {
+                        "subcategory": "Plastic sticker, label, etiquette", "tags": ["plant", "price", "tag"]
+                    },
+                    {
+                        "subcategory": "Laminated (plastified) paper", "tags": ["magazine", "photograph", "gift", "notebook", "journal", "pictures", "menu", "glossy", "shiny", "plastic"]
+                    },
+                    {
+                        "subcategory": "Aluminium foil", "tags": ["crumpled", "wrapping", "packaging"]
+                    },
+                    {
+                        "subcategory": "Tea bag", "tags": ["teabag"]
+                    },
+                    {
+                        "subcategory": "Plastic foil", "tags": []
+                    },
+                    {
+                        "subcategory": "Foil, unsure of material", "tags": ["sheet", "unknown"]
+                    }
+                ]
+            },
+            {
+                "category": "Flat solid object",
+                "content": [
+                    {
+                        "subcategory": "Cardboard piece/sheet", "tags": []
+                    },
+                    {
+                        "subcategory": "Solid plastic", "tags": ["piece", "lid", "piece of plastic"]
+                    },
+                    {
+                        "subcategory": "Glass", "tags": ["flat", "window", "broken", "shard"]
+                    },
+                    {
+                        "subcategory": "Ceramic", "tags": ["flat", "broken", "clay"]
+                    }
+                ],
+            },
+            {
+                "category": "Cup shaped object",
+                
+                    "content": [
+                        {
+                            "subcategory": "Plastic flower pot", "tags": ["plant"]
+                        },
+                        {
+                            "subcategory": "Plastic cup", "tags": ["drink"]
+                        },
+                        {
+                            "subcategory": "Ceramic flower pot", "tags": ["plant", "clay"]
+                        },
+                        {
+                            "subcategory": "Pottery", "tags": ["decoration", "painting", "art", "ceramic", "jar", "vase", "kitchen", "utensils", "pots"]
+                        },
+                        {
+                            "subcategory": "Cardboard flower pot", "tags": ["plant", "recycled"]
+                        },
+                        {
+                            "subcategory": "Cardboard cup", "tags": ["drink"]
+                        },
+                        {
+                            "subcategory": "Glass", "tags": ["drink", "recipient", "cup"]
+                        },
+                        {
+                            "subcategory": "Unsure of material", "tags": ["cup", "unknown"]
+                        }
+                    ],
+            },
+            {
+                "category": "Bag",
+                "content": [
+                    {
+                        "subcategory": "Plastic bag filled with biowaste", "tags": ["compost", "full"]
+                    },
+                    {
+                        "subcategory": "Plastic bag unsure of content", "tags": ["full"]
+                    },
+                    {
+                        "subcategory": "Empty transparent plastic bag", "tags": ["see", "through"]
+                    },
+                    {
+                        "subcategory": "Empty opaque plastic bag", "tags": ["colored", "coloured"]
+                    },
+                    {
+                        "subcategory": "Compostable", "tags": ["biowaste", "green", "grid", "pattern", "bag"]
+                    },
+                    {
+                        "subcategory": "Paper", "tags": ["carry", "shopping", "groceries", "bag"]
+                    },
+                    {
+                        "subcategory": "Unsure of material", "tags": ["bag", "unknown"]
+                    }
+                ],
+            },
+            {
+                "category": "Strap shaped",
+                "content": [
+                    {
+                        "subcategory": "Metal", "tags": ["wire", "strap", "string", "rope"]
+                    },
+                    {
+                        "subcategory": "Plastic", "tags": ["strap", "string", "rope"]
+                    },
+                    {
+                        "subcategory": "Electric", "tags": ["strap", "string", "rope", "cable"]
+                    },
+                    {
+                        "subcategory": "Unsure of material", "tags": ["strap", "string", "rope", "unknown"]
+                    },
+                ],
+            },
+            {
+                "category": "Bottle",
+                "content": [
+                    {
+                        "subcategory": "Plastic, PET", "tags": ["shampoo", "drink", "soda", "water", "deodorant", "recipient", "soap", "bottle"]
+                    },
+                    {
+                        "subcategory": "Glass", "tags": ["beer", "wine", "bottle"]
+                    }
+                ],
+            },
+            {
+                "category": "Can",
+                "content": [
+                    {
+                        "subcategory": "Tin", "tags": ["food", "canned", "tinned", "grooves", "can"]
+                    },
+                    {
+                        "subcategory": "Aluminium", "tags": ["soda", "drink", "spray", "aerosols", "can"]
+                    },
+                ],
+            },
+            {
+                "category": "Capsule",
+                "content": [
+                    {
+                        "subcategory": "Metal", "tags": ["capsule", "lid", "bottle", "crowned", "beer", "soda", "opening", "cap"]
+                    },
+                    {
+                        "subcategory": "Composite", "tags": ["capsule", "coffee", "tea", "nespresso"]
+                    },
+                    {
+                        "subcategory": "Platis", "tags": ["cap", "bottle", "soda", "opening"]
+                    }
+                ],
+            },
+            {
+                "category": "Grid shaped",
+                "content": [
+                    {
+                        "subcategory": "Metal", "tags": ["grid", "fence"]
+                    },
+                    {
+                        "subcategory": "Plastic", "tags": ["grid", "fence"]
+                    }
+                ],
+            },
+            {
+                "category": "Tool",
+                "content": [
+                    {
+                        "subcategory": "Tool", "tags": ["magnetic", "metal", "tool", "hammer", "cutting", "showel", "trowel", "scissors", "shears"]
+                    },
+                    {
+                        "subcategory": "Workpiece", "tags": ["fastener", "magnetic", "metal", "screw", "nuts", "nails", "plates", "parts", "tool"]
+                    },
+                ],
+            },
+            {
+                "category": "Fabric and clothes",
+                "content": [
+                    {
+                        "subcategory": "Clothes", "tags": ["fabric", "trousers", "tshirt", "gloves", "hap", "cap", "coat", "skirt", "dress"]
+                    },
+                    {
+                        "subcategory": "Shoes", "tags": ["boots", "baskets"]
+                    },
+                    {
+                        "subcategory": "Fabric", "tags": ["coton", "synthetic", "meshes", "nets", "wipes", "tissues"]
+                    },
+                    {
+                        "subcategory": "Hygienic mask", "tags": ["face", "virus", "covid", "medical", "surgery"]
+                    },
+                ],
+            },
+            {
+                "category": "Plates and tableware",
+                "content": [
+                    {
+                        "subcategory": "Ceramic", "tags": ["clay", "plates", "tableware", "dishes", "mugs", "plates", "saucers"]
+                    },
+                    {
+                        "subcategory": "Plastic", "tags": ["fork", "knife", "plates", "tableware", "spoons"]
+                    },
+                    {
+                        "subcategory": "Metal", "tags": ["fork", "knife", "plates", "tableware", "spoons"]
+                    },
+                ],
+            },
+            {
+                "category": "Cigarettes and Iqos",
+                "content": [
+                    {
+                        "subcategory": "Cigarettes and Iqos", "tags": ["butts", "smoke"]
+                    }
+                ],
+            },
+            {
+                "category": "Furniture and bulky objects",
+                "content": [
+                    {
+                        "subcategory": "Furniture and bluky objects", "tags": ["polystyrene", "sagex"]
+                    }
+                ],
+            },
+            {
+                "category": "Treated wood",
+                "content": [
+                    {
+                        "subcategory": "Treated wood", "tags": ["manufactured", "plank", "plywood", "wicker", "basket", "crate", "chipboard", "processed"]
+                    }
+                ],
+            },
+            {
+                "category": "Electronics",
+                "content": [
+                    {
+                        "subcategory": "Electronics", "tags": ["computer", "phone", "toaster", "mixer", "speaker", "broken"]
+                    }
+                ],
+            },
+            {
+                "category": "Occulting objects",
+                "content": [
+                    {
+                        "subcategory": "Humans", "tags": ["person", "people", "occulting"]
+                    },
+                    {
+                        "subcategory": "Waste container", "tags": ["occulting", "bin"]
+                    },
+                    {
+                        "subcategory": "Other", "tags": ["fork", "knife", "plates", "tableware", "spoons"]
+                    },
+                ],
+            },
+            {
+                "category": "Other shapes and unsure",
+                "content": [
+                    {
+                        "subcategory": "Solid plastic", "tags": ["unknown"]
+                    },
+                    {
+                        "subcategory": "Plastic foil", "tags": ["sheet"]
+                    },
+                    {
+                        "subcategory": "Aluminium", "tags": ["unkown"]
+                    },
+                    {
+                        "subcategory": "Metal (tin, iron, steel)", "tags": ["unkown"]
+                    },
+                    {
+                        "subcategory": "Glass", "tags": ["unkown"]
+                    },
+                    {
+                        "subcategory": "Ceramic/clay", "tags": ["unkown"]
+                    },
+                    {
+                        "subcategory": "Composite (several materials)", "tags": ["unkown"]
+                    },
+                    {
+                        "subcategory": "Big stone", "tags": ["brick", "rock", "breeze", "cinder", "block"]
+                    },
+                    {
+                        "subcategory": "Anomaly", "tags": []
+                    },
+                ],
+            }
+        ];
+
+        // Populate menu with documentation categories and subcategories
+        const menuList = document.getElementById('menuList');
+        documentationData.forEach(category => {
+            const listItem = document.createElement('li');
+            listItem.textContent = category.category;
+            listItem.onclick = () => includeExternalContent(category.category);
+            menuList.appendChild(listItem);
+        });
+
+        // Display documentation content in the main window
+        function displayContent(item) {
+            const mainContent = document.getElementById('main');
+            if (item.content) {
+                mainContent.innerHTML = `<h2>${item.category || ''} ${item.subcategory || ''}</h2><p>${item.content}</p>`;
+            }
+        }
+
+        // Search function
+        function search() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const searchResults = [];
+            documentationData.forEach(category => {
+                if (category.content) {
+                    category.content.forEach(content_item => {
+                    const subcategoryMatch = content_item.subcategory.toLowerCase().includes(searchInput);
+                    if (subcategoryMatch) {
+                            searchResults.push({ category: category.category, subcategory: content_item.subcategory || '' });
+                    } else {
+                        content_item.tags.forEach(tag => {
+                            console.log(tag)
+                            const contentMatch = tag.toLowerCase().includes(searchInput);
+                        if (contentMatch || subcategoryMatch) {
+                            searchResults.push({ category: category.category, subcategory: content_item.subcategory || '' });
+                        }
+                        })}
+                    });
+                }
+            });
+
+            const mainContent = document.getElementById('main');
+            mainContent.innerHTML = '';
+            searchResults.forEach(result => {
+                mainContent.innerHTML += `<p>${result.category} -> ${result.subcategory}</p>`;
+            });
+        }
+    </script>
+</body>
+</html>
