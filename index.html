@@ -55,7 +55,7 @@
 
     <script>
 	function includeExternalContent(name) {
-		fetch(`./html_pages/${name}.html`)
+		fetch(`./html_pages/${name.toLowerCase()}.html`)
 			.then(response => response.text())
 			.then(data => {
 			document.getElementById('main').innerHTML = data;
